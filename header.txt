@@ -1,0 +1,78 @@
+/* --------------------------------------------------------------------------------------------------
+|                                                                                                    |
+|   Title: Architectures & Operating Systems: Coursework 2 - Thread-safe Memory Manager.             |
+|                                                                                                    |
+|   Authors: Buzz Embley-Riches 100237137 & James Burrell 100263300.                                 |
+|                                                                                                    |
+|   Last edit date: 06/12/19                                                                         |
+|                                                                                                    |
+|   Description: Program to simulate a thread-safe memory manager using a linked list                |
+|                implementation.                                                                     |
+|                                                                                                    |
+ --------------------------------------------------------------------------------------------------*/
+
+
+
+
+ //NextFit Algorithm test harness
+    /*
+    char * algo = "NextFit";
+    initialise(memory,size,algo);
+
+    void *x = allocate(50);
+    printf("allocate x output: %d\n===============================\n\nVisual Node output:\n\n",(char*)x);
+    output();
+
+    void *y = allocate(50);
+    printf("allocate y output: %d\n===============================\n\nVisual Node output:\n\n",(char*)y);
+    output();
+
+    void *z = allocate(100);
+    printf("allocate z output: %d\n===============================\n\nVisual Node output:\n\n",(char*)z);
+    output();
+
+    printf("X address: %d\n",(int)x);
+    printf("y address: %d\n",(int)y);
+    printf("z address: %d\n",(int)z);
+    printf("hole address: %d\n",(int)z + 120);
+    printf("Current NEXTFITNODE mem: %d\n",NEXTFITNODE->memory);
+
+    deallocate(z);
+    printf("dealocate z output: %d\n===============================\n\nVisual Node output:\n\n",(char*)x);
+    output();
+
+    printf("new NEXTFITNODE mem: %d\n",NEXTFITNODE->memory);
+     */
+
+
+    //BestFit Algorithm Test Harness
+    char * algo = "BestFit";
+    initialise(memory,size,algo);
+
+    void *x = allocate(50);
+    void *y = allocate(100);
+    void *z = allocate(200);
+    void *b = allocate(30);
+    printf("Allocate 4 nodes: \n===============================\n\nVisual Node output:\n\n");
+    output();
+
+    deallocate(x);
+    deallocate(z);
+
+    printf("De-allocate x & z: \n===============================\n\nVisual Node output:\n\n");
+    output();
+
+    //Should replace node x;
+    void *testAllocation = allocate(50);
+    printf("test allocation of 50: \n===============================\n\nVisual Node output:\n\n");
+    output();
+
+    deallocate(testAllocation);
+    printf("De-allocation of testAllocation: \n===============================\n\nVisual Node output:\n\n");
+    output();
+
+    //Should use node z, and create new hole:
+    void *test = allocate(10);
+    printf("test allocation2 of 150: \n===============================\n\nVisual Node output:\n\n");
+    output();
+
